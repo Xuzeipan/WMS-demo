@@ -11,3 +11,6 @@ yarn.lock
 package-lock.json
 
 *.log
+
+# Claude Code
+CLAUDE.md
