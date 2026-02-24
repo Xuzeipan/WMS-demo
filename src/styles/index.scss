@@ -1,9 +1,29 @@
 // import dark theme
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
 
-// :root {
-//   --ep-color-primary: red;
-// }
+:root {
+  --wms-bg-page: #f3f6fb;
+  --wms-bg-surface: #ffffff;
+  --wms-bg-surface-soft: #f8fafc;
+  --wms-text-primary: #0f172a;
+  --wms-text-secondary: #475569;
+  --wms-text-muted: #64748b;
+  --wms-border-color: #e2e8f0;
+  --wms-accent: #2563eb;
+  --wms-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+html.dark {
+  --wms-bg-page: #0b1220;
+  --wms-bg-surface: #111827;
+  --wms-bg-surface-soft: #1a2438;
+  --wms-text-primary: #e5e7eb;
+  --wms-text-secondary: #cbd5e1;
+  --wms-text-muted: #94a3b8;
+  --wms-border-color: #334155;
+  --wms-accent: #60a5fa;
+  --wms-shadow: 0 10px 30px rgba(2, 6, 23, 0.45);
+}
 
 body {
   font-family:
@@ -12,6 +32,73 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+  background: var(--wms-bg-page);
+  color: var(--wms-text-primary);
+}
+
+.page {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100%;
+  color: var(--wms-text-primary);
+  animation: page-enter 0.2s ease both;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--wms-text-primary);
+}
+
+.page-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--wms-text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.section {
+  border-radius: 8px;
+}
+
+.note {
+  font-size: 12px;
+  color: var(--wms-text-muted);
+}
+
+.stat-card {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wms-accent);
+}
+
+.stat-label {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--wms-text-muted);
+}
+
+.table-actions {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
 }
 
 a {
@@ -38,4 +125,38 @@ code {
   left: 0;
   width: 100%;
   height: 2px;
+}
+
+.ep-card {
+  background: var(--wms-bg-surface);
+  border-color: var(--wms-border-color);
+  color: var(--wms-text-primary);
+  box-shadow: var(--wms-shadow);
+}
+
+.ep-card__header {
+  border-bottom-color: var(--wms-border-color);
+}
+
+.ep-main,
+.ep-aside,
+.ep-header {
+  background: var(--wms-bg-page);
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
 }
